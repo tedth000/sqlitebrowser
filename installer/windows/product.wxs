@@ -99,8 +99,13 @@
                     <Component><File Source="$(var.QtPath)\bin\Qt5PrintSupport.dll" /></Component>
                     <Component><File Source="$(var.QtPath)\bin\Qt5Widgets.dll" /></Component>
                     <Component><File Source="$(var.QtPath)\bin\Qt5Xml.dll" /></Component>
-                    <Component><File Source="$(var.OpenSSLPath)\libeay32.dll" /></Component>
-                    <Component><File Source="$(var.OpenSSLPath)\ssleay32.dll" /></Component>
+                    <?if $(sys.BUILDARCH)="x64"?>
+                        <Component><File Source="$(var.OpenSSLPath)\libcrypto-1_1-x64.dll" /></Component>
+                        <Component><File Source="$(var.OpenSSLPath)\libssl-1_1-x64.dll" /></Component>
+                    <?elseif $(sys.BUILDARCH)="x86"?>
+                        <Component><File Source="$(var.OpenSSLPath)\libcrypto-1_1.dll" /></Component>
+                        <Component><File Source="$(var.OpenSSLPath)\libssl-1_1.dll" /></Component>
+                    <?endif?>
                     <Component><File Source="$(var.SQLCipherPath)\sqlcipher.dll" /></Component>
                     <Component><File Source="$(var.SQLitePath)\sqlite3.dll" /></Component>
                     <Component><File Source="$(var.SQLiteExePath)\DB Browser for SQLite.exe" Checksum="yes" /></Component>
@@ -188,8 +193,13 @@
             <ComponentRef Id="Qt5Widgets.dll" />
             <ComponentRef Id="Qt5Xml.dll" />
             <!-- OpenSSL -->
-            <ComponentRef Id="libeay32.dll" />
-            <ComponentRef Id="ssleay32.dll" />
+            <?if $(sys.BUILDARCH)="x64"?>
+                <ComponentRef Id="libcrypto-1_1-x64.dll" />
+                <ComponentRef Id="libssl-1_1-x64.dll" />
+            <?elseif $(sys.BUILDARCH)="x86"?>
+                <ComponentRef Id="libcrypto-1_1.dll" />
+                <ComponentRef Id="libssl-1_1.dll" />
+            <?endif?>
             <!-- SQLite & SQLCipher -->
             <ComponentRef Id="sqlcipher.dll" />
             <ComponentRef Id="sqlite3.dll" />

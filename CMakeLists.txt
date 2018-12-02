@@ -466,14 +466,26 @@ if(WIN32 AND MSVC)
 			${QT5_BIN_PATH}/Qt5Concurrent.dll
 		DESTINATION "/"
 		CONFIGURATIONS Release)
+
+	# The OpenSSL libraries
+	if(CMAKE_CL_64)
+		install(FILES
+			${OPENSSL_PATH}/libcrypto-1_1-x64.dll
+			${OPENSSL_PATH}/libssl-1_1-x64.dll
+		DESTINATION "/")
+	else()
+		install(FILES
+			${OPENSSL_PATH}/libcrypto-1_1.dll
+			${OPENSSL_PATH}/libssl-1_1.dll
+		DESTINATION "/")
+	endif()
+
 	# The files below are common to all configurations
 	install(FILES
 			${SQLITE3_DLL}
-			${OPENSSL_PATH}/libeay32.dll
-			${OPENSSL_PATH}/ssleay32.dll
 		DESTINATION "/")
 	install(FILES
-		${QT5_PATH}/plugins/platforms/qwindows.dll
+			${QT5_PATH}/plugins/platforms/qwindows.dll
 		DESTINATION platforms)
 
 	# The XML dll
