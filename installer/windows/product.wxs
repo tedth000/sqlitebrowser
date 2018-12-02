@@ -100,8 +100,8 @@
                     <Component><File Source="$(var.QtPath)\bin\Qt5Widgets.dll" /></Component>
                     <Component><File Source="$(var.QtPath)\bin\Qt5Xml.dll" /></Component>
                     <?if $(sys.BUILDARCH)="x64"?>
-                        <Component><File Source="$(var.OpenSSLPath)\libcrypto-1_1-x64.dll" /></Component>
-                        <Component><File Source="$(var.OpenSSLPath)\libssl-1_1-x64.dll" /></Component>
+                        <Component><File Source="$(var.OpenSSLPath)\libcrypto-1_1-x64.dll" Checksum="yes" /></Component>
+                        <Component><File Source="$(var.OpenSSLPath)\libssl-1_1-x64.dll" Checksum="yes" /></Component>
                     <?elseif $(sys.BUILDARCH)="x86"?>
                         <Component><File Source="$(var.OpenSSLPath)\libcrypto-1_1.dll" /></Component>
                         <Component><File Source="$(var.OpenSSLPath)\libssl-1_1.dll" /></Component>
@@ -194,11 +194,11 @@
             <ComponentRef Id="Qt5Xml.dll" />
             <!-- OpenSSL -->
             <?if $(sys.BUILDARCH)="x64"?>
-                <ComponentRef Id="libcrypto-1_1-x64.dll" />
-                <ComponentRef Id="libssl-1_1-x64.dll" />
+                <ComponentRef Id="libcrypto_1_1_x64.dll" />
+                <ComponentRef Id="libssl_1_1_x64.dll" />
             <?elseif $(sys.BUILDARCH)="x86"?>
-                <ComponentRef Id="libcrypto-1_1.dll" />
-                <ComponentRef Id="libssl-1_1.dll" />
+                <ComponentRef Id="libcrypto_1_1.dll" />
+                <ComponentRef Id="libssl_1_1.dll" />
             <?endif?>
             <!-- SQLite & SQLCipher -->
             <ComponentRef Id="sqlcipher.dll" />
