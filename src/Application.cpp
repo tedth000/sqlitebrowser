@@ -69,7 +69,7 @@ Application::Application(int& argc, char** argv) :
 
     // Work around a bug in QNetworkAccessManager which sporadically causes high pings for Wifi connections
     // See https://bugreports.qt.io/browse/QTBUG-40332
-    qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(INT_MAX));
+    //qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(INT_MAX));
 
     // Parse command line
     QString fileToOpen;
